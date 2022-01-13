@@ -10,6 +10,18 @@ const addMovie = async (movieObj) => {
     }
 };
 
+const listMovies = async () => {
+    try {
+        const movies = await Movie.findAll({});
+        console.log(movies.every(movie => movie instanceof Movie));
+        console.log("All Movies: ", JSON.stringify(movies, null, 2));
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+
 module.exports = {
-    addMovie
+    addMovie,
+    listMovies
 };

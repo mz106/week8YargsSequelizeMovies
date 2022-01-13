@@ -5,10 +5,10 @@ const commandLineInput = yargs(hideBin(process.argv)).argv;
 
 const { Movie }= require("./models/models");
 const connection = require("./db/connection");
-const { addMovie } = require("./utils/index");
+const { addMovie, listMovies } = require("./utils/index");
 
 const app = async (commandLineInput) => {
-
+     
     try {
         await connection.authenticate();
     } catch (error) {
@@ -24,6 +24,8 @@ const app = async (commandLineInput) => {
                     actor: commandLineInput.actor,
                     rating: commandLineInput.rating
                 }); 
+        } else if (commandLineInput.list) {
+            await listMovies();
         }
         connection.close();
         process.exit();

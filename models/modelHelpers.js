@@ -13,6 +13,15 @@ const setApproval = (rating) => {
     }
 };
 
+const firstUpper = (rawValue) => {
+    try {
+        return rawValue.split(" ").map((word) => `${word[0].toUpperCase()}${word.slice(1)}`).join(" ");
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 module.exports = {
     setApproval,
+    firstUpper
 };
